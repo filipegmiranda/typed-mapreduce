@@ -3,15 +3,15 @@ package util.testkit
 import engine.dataset.OutputDataSet
 
 
-case class InMemoryDataSetOutput() extends OutputDataSet[(String, Double), (String, Double)] {
+case class InMemoryDataSetOutput() extends OutputDataSet[(String, Int), (String, Int)] {
 
   import scala.collection.mutable.Map
 
-  val records: Map[String, Double] = Map[String, Double]()
+  val records: Map[String, Int] = Map[String, Int]()
 
-  override def write(rec: (String, Double)): Unit = {
+  override def write(rec: (String, Int)): Unit = {
     records += rec
   }
 
-  override def convert(rec: (String, Double)): (String, Double) = identity(rec)
+  override def convert(rec: (String, Int)): (String, Int) = identity(rec)
 }
