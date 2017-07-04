@@ -12,7 +12,7 @@ class MapReduceCoordinatorSpec extends EngineActorSpec {
   "An Actor MapReducerCoordinator " should
     "Send back Job completion notification the resulting should be mapped and reduced correctly " taggedAs Slow in {
     val input = Seq((InMemoryDataSetInput(), classOf[WordCountMapReduceTest]))
-    val reducer = new WordCountMapReduceTest
+    val reducer = classOf[WordCountMapReduceTest]
     val fakeJobName = "actor-job-test"
     val outputDataSet = InMemoryDataSetOutput()
     val jobId = s"$fakeJobName-${java.util.UUID.randomUUID}"

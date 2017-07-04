@@ -42,6 +42,7 @@ class MapReduceCoordinatorActor(inputDataSet: Seq[(InputDataSet[_], Class[_ <: M
         reducersRouter ! ReducerDescription(jName, reducer, p._2)
       }
     case ReductionResult(jName, r) =>
+      print(r)
       writer ! OutputDescription(jName, outputDataSet, r)
     case WrittenSucceeded(jName) =>
       nrReduceChunks -= 1

@@ -11,7 +11,7 @@ import scala.concurrent.duration.Duration
 trait Job extends EngineLogger {
   private var output: Option[OutputDataSet[_, _]] = None
 
-  private val mappers = collection.mutable.Seq[(Path, Class[_ <: MapperT])]()
+  private val mappers = collection.mutable.Buffer[(Path, Class[_ <: MapperT])]()
 
   private var reducer: Class[_ <: ReducerT] = _
 
@@ -19,7 +19,7 @@ trait Job extends EngineLogger {
 
   protected var timeout: Duration = _
 
-  def withTimeout(timeout: Duration): Job = {
+  def withTimeout(timeout: Duration = Duration.Inf): Job = {
     this.timeout = timeout
     this
   }
@@ -33,7 +33,7 @@ trait Job extends EngineLogger {
   }
 
   def addMapper[A <: MapperT](inputPath: Path, clazz: Class[A]): Job = {
-    mappers :+ inputPath -> clazz
+    mappers +=  inputPath -> clazz
     logger.debug(s"added mapper $clazz")
     this
   }

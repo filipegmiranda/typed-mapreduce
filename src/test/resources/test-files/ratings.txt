@@ -1,4 +1,4 @@
-{user_id: 100, movie_id: 1, rating: 10}
+{user_id: 100, 55 1, rating: 10}
 {user_id: 101, movie_id: 1, rating: 9.2}
 {user_id: 102, movie_id: 1, rating: 6}
 {user_id: 103, movie_id: 1, rating: 8.5}
